@@ -1,0 +1,12 @@
+#user-project-overview-container {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+}
+#user-project-tool-bar {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+body {
+    flex-wrap: nowrap;
+    overflow: hidden;
+}

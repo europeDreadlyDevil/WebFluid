@@ -1,0 +1,133 @@
+#tool-bar {
+    display: flex;
+    background: #212121;
+    padding: 8px;
+    margin: auto 0 auto 0;
+    box-shadow: 0 3px 5px 3px #181818;
+}
+#component-manager-tools {
+    display: flex;
+    border: 2px solid #232323;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+#component-manager-tools > * {
+    margin-right: 10px;
+}
+#component-manager-tools > *:last-child {
+    margin-right: 0;
+}
+#component-create-tool > * {
+    margin-right: 10px;
+}
+#component-create-tool {
+    display: flex;
+    margin-right: 10px;
+}
+#component-create-tool > *:last-child {
+    margin-right: 0;
+}
+.tool-button-icon {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+}
+
+.tool-button-icon > img {
+    width: 20px;
+    height: 20px;
+}
+
+.tool-button-convex:active {
+    animation: click 1s ease-in-out forwards;
+    box-shadow: inset 5px 5px 7px #191919,
+    inset -5px -5px 7px #292929;
+}
+@keyframes click {
+    from {
+        opacity: .5;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.tool-button-convex {
+    display: flex;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(145deg, #232323, #1e1e1e);
+    opacity: 1;
+    box-shadow:  5px 5px 10px #1c1c1c,
+    -5px -5px 10px #262626;
+}
+
+#element-move-tool {
+    display: flex;
+    border: 2px solid #232323;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#element-move-tool > *:not(*:last-child) {
+    margin-right: 10px;
+}
+
+#component-name-input {
+    height: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #212121;
+    box-shadow: inset 5px 5px 7px #191919,
+    inset -5px -5px 7px #292929;
+    color: #F0F2F6;
+}
+
+.list-item-name {
+    display: none;
+}
+.tool-button {
+    padding: 0;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #212121;
+    border-radius: 5px;
+    background: #212121;
+    box-shadow:  5px 5px 7px #191919,
+    -5px -5px 7px #292929;
+}
+#module-type-selector {
+    height: 42px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #212121;
+    box-shadow: inset 5px 5px 7px #191919,
+    inset -5px -5px 7px #292929;
+    color: #F0F2F6;
+    border: 0;
+}
+
+#module-type-selector:focus {
+    outline: 0;
+}
+
+#module-create-tool {
+    display: flex;
+}
+
+#module-tool-manager {
+    display: flex;
+    border: 2px solid #232323;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+#module-tool-manager > *:not(*:last-child) {
+    margin-right: 10px;
+}
+#module-create-tool > *:not(*:last-child) {
+    margin-right: 10px;
+}

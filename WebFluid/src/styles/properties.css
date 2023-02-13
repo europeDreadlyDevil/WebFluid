@@ -1,0 +1,19 @@
+#project-element-properties {
+    min-height: 1080px;
+    background: #212121;
+    background-size: 100% auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: inset 5px 5px 7px #191919,
+    inset -5px -5px 7px #292929;
+    color: #F0F2F6;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+#project-element-properties::-webkit-scrollbar{
+    background: none;
+}
+#project-element-properties::-webkit-scrollbar-thumb {
+    background: #1A182F;
+    border-radius: 5px;
+}
