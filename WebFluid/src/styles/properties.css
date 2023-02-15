@@ -17,3 +17,9 @@
     background: #1A182F;
     border-radius: 5px;
 }
+#text-color-style-input {
+    height: 35px;
+    width: 35px;
+    padding: 5px;
+    border: 0;
+}

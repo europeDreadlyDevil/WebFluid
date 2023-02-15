@@ -1,31 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import ToolBar from "./tool_bar.jsx";
+import ToolBar from "./toolbar.jsx";
 import '../styles/work-space.css'
 import LayerManager from "./layerManager.jsx";
-import PropertiesManager from "./propertiesManager.jsx";
+import PropertiesManager, {setProperties} from "./propertiesManager.jsx";
 
 const WorkSpace = (props) => {
+
+    function selectLayer (elementInArr, target) {
+        if (elementInArr.linkToLayer.layerNode === target.parentNode) {
+            g_projectInfo.selectedElement = elementInArr.linkToLayer.linkToNode
+            setProperties(g_projectInfo.selectedElement)
+        }
+    }
 
     useEffect(() => {
         const OVER_VIEW = document.getElementById(props.projectName)
         OVER_VIEW.onclick = (ev) => {
             g_projectInfo.selectedElement = ev.target
+            setProperties(g_projectInfo.selectedElement)
             ev.stopPropagation()
         }
 
         const PROJECT_LAYERS = document.getElementById('user-project-layers')
-
-        function selectLayer (elementInArr, target) {
-            if (elementInArr.linkToLayer.layerNode === target.parentNode) {
-                g_projectInfo.selectedElement = elementInArr.linkToLayer.linkToNode
-                const WIDTH_PROPERTIES = document.getElementById('width-style-input')
-                const HEIGHT_PROPERTIES = document.getElementById('height-style-input')
-                const FONT_FAMILY_PROPERTIES = document.getElementById('font-family-style-input')
-                WIDTH_PROPERTIES.value = g_projectInfo.selectedElement.style.width
-                HEIGHT_PROPERTIES.value = g_projectInfo.selectedElement.style.height
-                FONT_FAMILY_PROPERTIES.value = g_projectInfo.selectedElement.style.fontFamily
-            }
-        }
 
         PROJECT_LAYERS.onclick = (ev) => {
             switch (ev.target.parentNode.dataset.elementType) {
@@ -43,7 +39,6 @@ const WorkSpace = (props) => {
                     ev.stopPropagation()
                     break;
             }
-
         }
     })
 

@@ -105,6 +105,28 @@ function addDefaultProperties(node) {
     node.style.width = 'auto'
     node.style.height = 'auto'
     node.style.fontFamily = "'Arial', sans-serif"
+    switch (node.nodeName) {
+        case 'H1':
+            node.style.fontSize = '32px';
+            break;
+        case 'H2':
+            node.style.fontSize = '24px';
+            break;
+        case 'H3':
+            node.style.fontSize = '18px';
+            break;
+        case 'H5':
+            node.style.fontSize = '12px';
+            break;
+        case 'H6':
+            node.style.fontSize = '10px';
+            break;
+        default:
+            node.style.fontSize = '16px';
+            break;
+    }
+    node.style.letterSpacing = '0px'
+    node.style.color = '000'
 }
 
 export function updateText(module) {

@@ -1,0 +1,31 @@
+#start-menu {
+    background-color: #212121;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+
+#start-menu > section > input {
+    height: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #212121;
+    box-shadow: inset 5px 5px 7px #191919,
+    inset -5px -5px 7px #292929;
+    color: #F0F2F6;
+    margin-right: 25px;
+}
+
+button {
+    padding: 0;
+    margin: 0;
+    width: 120px;
+    height: 40px;
+    border: 1px solid #212121;
+    border-radius: 5px;
+    background: #212121;
+    box-shadow:  5px 5px 7px #191919,
+    -5px -5px 7px #292929;
+    font-weight: 600;
+}

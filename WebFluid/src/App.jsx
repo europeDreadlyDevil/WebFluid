@@ -1,12 +1,12 @@
-
 import React from "react";
-import WorkSpace from "./basedComponents/work_space.jsx";
-
+import WorkSpace from "./basedComponents/workSpace.jsx";
+import StartMenu from "./basedComponents/startMenu.jsx";
+import './App.css'
 
 function App() {
 
     window.g_projectInfo = {
-        projectName: 'test-project',
+        projectName: '',
         selectedElement: '',
         componentsArrNew: [],
         moduleArr: [],
@@ -17,7 +17,8 @@ function App() {
 
     return (
         <div id='app'>
-            <WorkSpace projectName = {g_projectInfo.projectName}/>
+            <StartMenu/>
+            {/*<WorkSpace projectName={g_projectInfo.projectName}/>*/}
         </div>
     );
 

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import '../styles/layers-style.css'
-import {syncComponents, updateText} from "./tool_bar.jsx";
+import {syncComponents, updateText} from "./toolbar.jsx";
 
 export class Layer {
     constructor(linkToNode) {

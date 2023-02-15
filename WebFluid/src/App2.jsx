@@ -1,7 +1,7 @@
 
 import "./App.css";
 import React, {useEffect} from "react";
-import WorkSpace from "./basedComponents/work_space.jsx";
+import WorkSpace from "./basedComponents/workSpace.jsx";
 import GreetingMenu from "./basedComponents/greeting_menu2.jsx";
 import ReactDOM from "react-dom/client";
 import WorkSpaceDeep from "./basedComponents/work_space_deep";
