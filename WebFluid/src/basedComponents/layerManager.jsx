@@ -40,7 +40,7 @@ export class Layer {
         }else {
             switch (PARENT_NODE.hasAttribute('name')) {
                 case true:
-                    for (let component of g_projectInfo.componentsArrNew){
+                    for (let component of g_projectInfo.componentsArr){
                         appendLayer(component, this.layerNode)
                     }
                     break;

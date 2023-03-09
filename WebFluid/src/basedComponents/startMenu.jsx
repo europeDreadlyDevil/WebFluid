@@ -20,7 +20,9 @@ const StartMenu = () => {
                 </button>
             </section>
             <section id={'open-project'}>
-                <button>
+                <button onClick={() => {
+                    openProject()
+                }}>
                     Open project
                 </button>
             </section>

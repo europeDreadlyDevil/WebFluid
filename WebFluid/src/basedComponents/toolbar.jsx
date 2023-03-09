@@ -4,16 +4,17 @@ import {Layer} from './layerManager.jsx'
 
 class Component {
     constructor(name) {
+        this.elementType = 'component'
         this.name = name
         this.componentNode = document.createElement('div')
-        this.componentsInside = []
+        this.elementsInside = []
         this.linkToLayer = new Layer(this.componentNode)
         this.componentNode.dataset.elementType = 'component'
     }
     createComponent(componentContainer, componentName) {
         if (componentContainer !== '') {
             let isClone = false
-            for (const currentComponent of g_projectInfo.componentsArrNew) {
+            for (const currentComponent of g_projectInfo.componentsArr) {
                 if (currentComponent.name === componentName) {
                     isClone = true
                     break
@@ -28,7 +29,7 @@ class Component {
                 addDefaultProperties(this.componentNode)
                 syncComponents(componentContainer)
                 if (componentContainer !== document.getElementById(g_projectInfo.projectName)) {
-                    for (const component of g_projectInfo.componentsArrNew) {
+                    for (const component of g_projectInfo.componentsArr) {
                         if (component.componentNode === componentContainer) {
                             component.componentsInside = Array.from(component.componentsInside)
                             component.componentsInside.push(newComponent)
@@ -53,14 +54,6 @@ class Component {
             let copyComponent = currentComponent.cloneNode(true)
             this.componentNode = copyComponent
             componentContainer.append(copyComponent)
-            if (componentContainer !== document.getElementById(g_projectInfo.projectName)) {
-                for (const component of g_projectInfo.componentsArrNew) {
-                    if (component.componentNode === componentContainer) {
-                        component.componentsInside = Array.from(component.componentsInside)
-                        component.componentsInside.push(copyComponent)
-                    }
-                }
-            }
             syncComponents(componentContainer)
         }else {
             window.alert('Select component for copy')
@@ -70,6 +63,7 @@ class Component {
 
 class Module {
     constructor(moduleType) {
+        this.elementType = 'module'
         this.moduleNode = document.createElement(moduleType)
         this.moduleNode.dataset.moduleName = moduleType.toUpperCase()
         if (g_projectInfo.baseSettings.textModules.includes(moduleType.toUpperCase())) {
@@ -81,11 +75,16 @@ class Module {
         this.moduleNode.dataset.elementType = 'module'
     }
     createModule(container) {
-        let newModule = this.moduleNode
-        newModule.textContent = 'hi from ' + newModule.nodeName + ' module'
-        container.append(newModule)
-        addDefaultProperties(this.moduleNode)
-        syncComponents(container)
+        if (container.dataset.moduleType !== 'textModule') {
+            let newModule = this.moduleNode
+            newModule.textContent = 'hi from ' + newModule.nodeName + ' module'
+            newModule.dataset.textInner = newModule.textContent
+            container.append(newModule)
+            addDefaultProperties(this.moduleNode)
+            syncComponents(container)
+        }else {
+            alert('Error: To lay out a text module, you need to select a container module or component')
+        }
     }
     deleteModule(module) {
         const MODULE_CONTAINER = module.parentNode
@@ -126,13 +125,13 @@ function addDefaultProperties(node) {
             break;
     }
     node.style.letterSpacing = '0px'
-    node.style.color = '000'
+    node.style.color = '#000'
 }
 
 export function updateText(module) {
     const newText = prompt('Enter new text:')
     module.innerHTML = newText
-    module.dataset.moduleName = newText
+    module.dataset.textInner = newText
 }
 
 export function syncComponents(componentContainer) {
@@ -146,7 +145,7 @@ export function syncComponents(componentContainer) {
     }
 
     let container = document.getElementById(g_projectInfo.projectName).querySelectorAll('*')
-    g_projectInfo.componentsArrNew = []
+    g_projectInfo.componentsArr = []
     g_projectInfo.moduleArr = []
     let projectLayers = document.getElementById('project-layers')
     projectLayers.replaceWith(projectLayers.cloneNode(false))
@@ -157,14 +156,13 @@ export function syncComponents(componentContainer) {
             newComponent.linkToLayer = new Layer(element)
             newComponent.linkToLayer.createLayer(componentName, g_projectInfo.projectName)
             newComponent.componentNode = element
-            newComponent.componentsInside = element.querySelectorAll('*')
-            g_projectInfo.componentsArrNew.push(newComponent)
+            newComponent.elementsInside = element.querySelectorAll('*')
+            g_projectInfo.componentsArr.push(newComponent)
         }else {
             if (element.nodeName !== 'BR') {
                 let newModule = new Module(element.nodeName)
                 newModule.linkToLayer = new Layer(element)
-                console.log(element.dataset.moduleName)
-                newModule.linkToLayer.createLayer(element.dataset.moduleName, g_projectInfo.projectName)
+                newModule.linkToLayer.createLayer(element.dataset.textInner, g_projectInfo.projectName)
                 newModule.moduleNode = element
                 g_projectInfo.moduleArr.push(newModule)
             }
